@@ -1,10 +1,20 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:fontFamily">@font/secular_one_regular</item>
+
     </style>
 
+    <style name="AppTheme.SearchInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorHint">@android:color/white</item>
+        <item name="startIconTint">@android:color/white</item>
+        <item name="boxBackgroundColor">@color/colorBackgroundSearchInput</item>
+        <item name="boxStrokeColor">@color/colorBackgroundSearchInput</item>
+    </style>
 </resources>

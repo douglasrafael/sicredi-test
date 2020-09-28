@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.fsdevelopment.sicreditestapp.ui.event.list.EventListFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/event_list_fragment">
+        <action
+            android:id="@+id/action_eventList_to_eventDetailFragment"
+            app:destination="@id/eventDetail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/eventDetail"
+        android:name="com.fsdevelopment.sicreditestapp.ui.event.detail.EventDetailFragment"
+        android:label="fragment_event_detail"
+        tools:layout="@layout/event_detail_fragment">
+
+        <argument
+            android:name="event"
+            app:argType="com.fsdevelopment.sicreditestapp.data.model.Event"
+            app:nullable="false" />
+    </fragment>
+</navigation>

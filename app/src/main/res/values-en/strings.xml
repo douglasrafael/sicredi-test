@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_check_in">Check-in</string>
+    <string name="title_provide">Provide</string>
+
+    <!--  home  -->
+    <string name="title_slogan">Find the best events for you in one place!</string>
+
+    <!--  date/hours format  -->
+    <string name="format_day_month">MMMM\',\' dd</string>
+    <string name="format_day_week_hour">EEE \'at\' HH:mm \'hrs\'</string>
+
+    <!-- MESSAGE ERROR -->
+    <string name="message_error_conn">It was not possible to connect to our servers. Please check your connection!</string>
+    <string name="message_error_400">The operation could not be completed. Provide all requested information and try again&#8230;</string>
+    <string name="message_error_500">An error occurred communicating with the server. Please try again later&#8230;</string>
+    <string name="message_location_required">For a better usage experience, provide access to the location.</string>
+</resources>

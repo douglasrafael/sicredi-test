@@ -7,7 +7,6 @@ import com.fsdevelopment.sicreditestapp.di.viewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
-import org.koin.core.logger.Level
 import timber.log.Timber
 
 class App : Application() {
@@ -20,9 +19,11 @@ class App : Application() {
         }
 
         startKoin {
-            androidLogger(Level.DEBUG)
+            androidLogger()
             androidContext(this@App)
-            modules(listOf(netModule, repositoryModule, viewModel))
+
+            koin.loadModules(arrayListOf(netModule, repositoryModule, viewModel))
+            koin.createRootScope()
         }
     }
 }
