@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="event"
+            type="com.fsdevelopment.sicreditestapp.data.model.Event" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.MaterialComponents.CardView"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimaryLight">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/titleTextView"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="10dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{event.title}"
+                android:textColor="@color/colorPrimaryText"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/eventImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Feira de Troca de Livros" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/dayTextView"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:gravity="start"
+                android:singleLine="false"
+                android:textColor="@color/colorPrimaryText"
+                app:dateFormat="@{@string/format_day_month}"
+                app:dateLong="@{event.date}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+                tools:text="12 de maio" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hourTextView"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:gravity="start"
+                android:singleLine="false"
+                android:textColor="@color/colorPrimaryText"
+                app:dateFormat="@{@string/format_day_week_hour}"
+                app:dateLong="@{event.date}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dayTextView"
+                tools:text="seg às 17:00 hrs" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/eventImage"
+                imageUrl="@{event.image}"
+                android:layout_width="130dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/placeholder" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="6dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:text="@{String.format(@string/price_format, event.price)}"
+                android:textAlignment="center"
+                android:textColor="@color/colorSecondaryText"
+                app:chipBackgroundColor="@color/colorAccent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="R$ 19.99" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/ic_action_not_favorite"
+                android:tint="@color/colorFavorite"
+                app:changeIconFavorite="@{event.isFavorite}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/eventImage" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

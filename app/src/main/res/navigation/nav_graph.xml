@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/homeScreen">
+
+    <fragment
+        android:id="@+id/homeScreen"
+        android:name="com.fsdevelopment.sicreditestapp.ui.list.EventListFragment"
+        android:label="fragment_event_list"
+        tools:layout="@layout/event_list_fragment">
+        <action
+            android:id="@+id/toEventDetail"
+            app:destination="@id/detailScreen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailScreen"
+        android:name="com.fsdevelopment.sicreditestapp.ui.detail.EventDetailFragment"
+        android:label="fragment_event_detail"
+        tools:layout="@layout/event_detail_fragment">
+
+        <argument
+            android:name="event"
+            app:argType="com.fsdevelopment.sicreditestapp.data.model.Event"
+            app:nullable="false" />
+
+        <action
+            android:id="@+id/toCheckInDialog"
+            app:destination="@id/checkInDialog" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchScreen"
+        android:name="com.fsdevelopment.sicreditestapp.ui.search.EventSearchFragment"
+        android:label="fragment_event_search"
+        tools:layout="@layout/event_search_fragment">
+        <action
+            android:id="@+id/toEventDetail"
+            app:destination="@id/detailScreen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/checkInScreen"
+        android:name="com.fsdevelopment.sicreditestapp.ui.checkin.EventCheckInListFragment"
+        android:label="fragment_list_check_in"
+        tools:layout="@layout/event_search_fragment">
+        <action
+            android:id="@+id/toEventDetail"
+            app:destination="@id/detailScreen" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/checkInDialog"
+        android:name="com.fsdevelopment.sicreditestapp.ui.checkin.EventCheckInRegisterFragment"
+        android:label="dialog_event_check_in"
+        tools:layout="@layout/bottom_sheet_check_in" >
+        <argument
+            android:name="eventId"
+            app:argType="string" />
+    </dialog>
+
+</navigation>

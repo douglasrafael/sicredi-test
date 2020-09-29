@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeScreen"
+        android:icon="@drawable/ic_action_home"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/searchScreen"
+        android:icon="@drawable/ic_action_search"
+        android:title="@string/title_search" />
+
+    <item
+        android:id="@+id/checkInScreen"
+        android:icon="@drawable/ic_action_check_in"
+        android:title="@string/title_check_in" />
+</menu>

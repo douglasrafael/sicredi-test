@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_check_in">Check-in</string>
+    <string name="title_event">Event</string>
+    <string name="title_error">Error</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_share">Share</string>
+
+    <!--  home  -->
+    <string name="title_slogan">Find the best events for you in one place!</string>
+
+    <!--  date/hours format  -->
+    <string name="format_date">yyyy-MM-dd, HH:mm \'hrs\'</string>
+    <string name="format_day_month">MMMM\',\' dd</string>
+    <string name="format_day_week_hour">EEE \'at\' HH:mm \'hrs\'</string>
+
+    <!--  search  -->
+    <string name="search_hint">Search by name&#8230;</string>
+
+    <!--  details  -->
+    <string name="event_checked_favorite">Event saved in favorites ;)</string>
+    <string name="event_unchecked_favorite">Event removed from favorites!</string>
+    <string name="event_share_title">I\'m ready to go! Let\'s go?</string>
+
+    <!-- check-in -->
+    <string name="message_no_check_in">You have not checked in. As soon as you do, they can be consulted here&#8230;</string>
+    <string name="message_email_required">A valid email is required!</string>
+    <string name="message_name_required">A name with at least 10 characters is required!</string>
+    <string name="hint_name">Full Name</string>
+    <string name="hint_email">E-Mail</string>
+    <string name="title_success">Success!</string>
+    <string name="check_in_successful">Check-in at the event!\nYou will soon receive a confirmation email and instructions.</string>
+
+    <!-- MESSAGE ERROR -->
+    <string name="message_error_conn">It was not possible to connect to our servers. Please check your connection!</string>
+    <string name="message_error_400">The operation could not be completed. Provide all requested information and try again&#8230;</string>
+    <string name="message_error_500">An error occurred communicating with the server. Please try again later&#8230;</string>
+    <string name="message_events_no_data">Oops! Could not find events&#8230;</string>
+
+</resources>
