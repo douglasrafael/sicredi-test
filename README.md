@@ -7,8 +7,7 @@
 
 ### Este projeto foi realizado para o teste de desenvolvedor Android da [Sicredi](https://github.com/WoopSicredi/jobs/issues/1). 
 
-Foi desenolvido em Kotlin utilizando os mais avançados recursos que a linguagem oferece como Extensions e Coroutines, como também, os mais recentes recursos das bibilotecas Jetpack, como Navigation e Databinding.
-
+Foi desenvolvido em Kotlin utilizando os mais avançados recursos que a linguagem oferece como Extensions e Coroutines, como também, os mais recentes recursos das bibliotecas Jetpack, como Navigation e Databinding.
 
 Com base nos requerimentos e instruções fornecidas para desenvolvimento foi implementado as seguintes funcionalidades:
 - Listagem de eventos;
@@ -21,7 +20,7 @@ Com base nos requerimentos e instruções fornecidas para desenvolvimento foi im
 
 
 ## Começando
-A maneira mais fácil de visualizar o aplicativo em ação pe baixando e estalando o [apk >>][apk-download-url]
+A maneira mais fácil de visualizar o aplicativo em ação é baixando e instalando o [apk >>][apk-download-url]
 
 Se deseja visualizar o código e os detalhes de implementação você pode utilizar o Android Studio:
 #### Pré-requisitos
@@ -46,15 +45,15 @@ A aplicação é composto pelas entidades Event, People e CheckIn.
 
 
 ## Arquitetura
-Foi utilizado **MVVM** _(Model-View-ViewModel)_. Este Pattern suporta ligação bidirecional entre View e ViewModel, com isto é possível termos propagação automática de mudanças, para isso, é utilizado LiveData (Objeto Observável). 
+Foi utilizado **MVVM** _(Model-View-ViewModel)_. Este Pattern suporta ligação bidirecional entre View e ViewModel, com isto é possível termos propagação automática de mudanças e LiveData (Objeto Observável) é utilizado para essa finalidade. 
 
 
 <img src="https://i.imgur.com/mGNkir2.png" />
 
 
-Como pode ser visto na imagem anterior, a arquittura divide-se em três camadas:
+Como pode ser visto na imagem anterior, a arquitetura divide-se em três camadas:
 
-1. **View** - São as telas como Activity e Fragment, ou seja, é onde fica os componentes de interface que o usuário interage. Essa camada se comunica exclusivamente com a ViewModel.
+1. **View** - São Activity e Fragment, ou seja, é onde fica os componentes de interface que o usuário interage. Essa camada se comunica exclusivamente com a ViewModel.
 
 2. **ViewModel** - É a camada responsável por expor métodos, comandos e propriedades que mantém o estado da View, ela se comunica com a camada de dados e retorna resultados de uma ação por meio de objetos observáveis.
 
@@ -67,15 +66,15 @@ Nesse primeiro momento, foi realizado apenas teste de interface. O ideal é que 
 ## Principais Bibliotecas Utilizadas
 
 - [Koin](https://insert-koin.io/) Utilizada para Injeção de Depência (DI), ela cria as instâncias em tempo de execução.
-- [Android Material Compontes](https://material.io/components) Possibilita a utilização dos mais novos compontes de design.
-- [Retrofit](https://square.github.io/retrofit/) Client HTTP, utilizado para fazer comunicação com API Rest.
+- [Android Material Compontes](https://material.io/components) Possibilita a utilização dos mais novos componentes do Material Design.
+- [Retrofit](https://square.github.io/retrofit/) Client HTTP. Utilizada para fazer comunicação com API Rest.
 - [Coil](https://github.com/coil-kt/coil/) Utilizada para carregamento de imagens. Ela é escrita 100% em Kotlin e concorre diretamente com Glide e Picasso.
-- [Koleton])(https://github.com/ericktijerou/koleton) Fornece uma maneira fácil de mostrar o esqueleto de qualquer visualização, útil para estados de loading.
-- [Alerter](https://github.com/Tapadoo/Alerter/branches) Utilizada para exibir alertas em estiilo de notificações dentro ao aplicatvo.
+- [Koleton](https://github.com/ericktijerou/koleton) Fornece uma maneira fácil de mostrar o esqueleto de qualquer visualização, útil para estados de loading.
+- [Alerter](https://github.com/Tapadoo/Alerter/branches) Utilizada para exibir alertas em estilo de notificações dentro do aplicativo.
 - [Timber](https://github.com/JakeWharton/timber) Centralizador de logger.
-- [Play Sevices Maps](https://developers.google.com/maps/documentation/android-sdk/start) Usada para funcinalidades de mapa.
+- [Play Sevices Maps](https://developers.google.com/maps/documentation/android-sdk/start) Usada para funcionalidades de mapa.
 - [Valifi](https://github.com/mlykotom/valifi) Usada para validação de formulário. Possui suporte a databinding.
-- [mockito](https://github.com/mlykotom/valifi) Usada para validação de formulário. Possui suporte a databinding.
+- [mockito](https://github.com/mlykotom/valifi) Usada para realização dos testes de unidade.
 
 
 ### Screenshots
