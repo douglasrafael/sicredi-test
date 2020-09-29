@@ -32,8 +32,19 @@ val netModule = module {
     single { provideRetrofit(get(), get()) }
     single { provideEventService(get()) }
     single { provideEventApi(get(), get()) }
-    single { provideHttpClient(get()) }
+    single { provideHttpClient(get(), get()) }
     single { provideImageLoader(get(), get()) }
+}
+
+/**
+ * Provide Retrofit instance.
+ */
+fun provideRetrofit(factory: Gson, client: OkHttpClient): Retrofit {
+    return Retrofit.Builder()
+        .baseUrl(BuildConfig.EVENT_API_URL)
+        .client(client)
+        .addConverterFactory(GsonConverterFactory.create(factory))
+        .build()
 }
 
 /**
@@ -48,21 +59,20 @@ fun provideCache(application: Application): Cache {
  * Provide Gson instance used in Retrofit.
  */
 fun provideGson(): Gson {
-    return GsonBuilder()
-        .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-        .create()
+    return GsonBuilder().create()
 }
 
 /**
  * Provide http client security.
  */
-fun provideHttpClient(cache: Cache): OkHttpClient {
+fun provideHttpClient(cache: Cache, interceptor: Interceptor): OkHttpClient {
     return OkHttpClient
         .Builder()
         .cache(cache)
         .connectTimeout(1, TimeUnit.MINUTES)
         .readTimeout(1, TimeUnit.MINUTES)
         .writeTimeout(1, TimeUnit.MINUTES)
+        .addInterceptor(interceptor)
         .build()
 }
 
@@ -70,22 +80,9 @@ fun provideHttpClient(cache: Cache): OkHttpClient {
  * Provides Interceptor for logs used in OkHttpClient.
  */
 fun provideLoggerInterceptor(): Interceptor {
-    val logging = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
-        override fun log(message: String) = Timber.tag("OkHttp").d(message)
-    })
+    val logging = HttpLoggingInterceptor { message -> Timber.tag("OkHttp").d(message) }
     logging.level = HttpLoggingInterceptor.Level.BODY
     return logging
-}
-
-/**
- * Provide Retrofit instance.
- */
-fun provideRetrofit(factory: Gson, client: OkHttpClient): Retrofit {
-    return Retrofit.Builder()
-        .baseUrl(BuildConfig.EVENT_API_URL)
-        .client(client)
-        .addConverterFactory(GsonConverterFactory.create(factory))
-        .build()
 }
 
 /**

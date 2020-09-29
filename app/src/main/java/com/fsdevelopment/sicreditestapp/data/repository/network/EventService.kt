@@ -14,6 +14,6 @@ interface EventService {
     @GET("/api/events")
     suspend fun listEvents(@Query("title") search: String?): List<Event>
 
-    @POST("api/events/{event_id}")
-    suspend fun checkIn(@Body checkIn: CheckIn, @Path("event_id") id: String)
+    @POST("/api/checkin")
+    suspend fun checkIn(@Body checkIn: CheckIn)
 }

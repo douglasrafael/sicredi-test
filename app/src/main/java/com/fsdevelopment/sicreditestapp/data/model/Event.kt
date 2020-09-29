@@ -20,5 +20,14 @@ data class Event(
     val image: String,
     val latitude: String,
     val longitude: String,
-    val people: List<People>?
-): Parcelable
+    val people: List<People>,
+    var address: String = "",
+    var isFavorite: Boolean = false
+) : Parcelable {
+
+    override fun hashCode(): Int {
+        return id?.hashCode() ?: 0
+    }
+    
+    override fun equals(other: Any?) = (other is Event) && id == other.id
+}

@@ -25,7 +25,7 @@ class EventApiImpl(
 
     override suspend fun checkIn(checkIn: CheckIn): ResultWrapper<Unit> {
         return networkHelper.safeApiCall(dispatcher) {
-            service.checkIn(checkIn, checkIn.eventId)
+            service.checkIn(checkIn)
         }
     }
 }

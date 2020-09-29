@@ -9,15 +9,22 @@
             type="com.fsdevelopment.sicreditestapp.data.model.Event" />
     </data>
 
-    <View
-        style="@style/Widget.MaterialComponents.CardView"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:layout_marginBottom="16dp"
-        android:background="@color/colorPrimaryLight"
-        android:clickable="true"
-        android:focusable="true"
-        android:theme="@style/Widget.MaterialComponents.CardView"
-        app:cardCornerRadius="10dp" />
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp">
+
+        <View
+            style="@style/Widget.MaterialComponents.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:background="@color/colorPrimaryLight"
+            android:clickable="true"
+            android:focusable="true"
+            android:theme="@style/Widget.MaterialComponents.CardView"
+            app:cardCornerRadius="10dp" />
+    </FrameLayout>
 
 </layout>

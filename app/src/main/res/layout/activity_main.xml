@@ -18,9 +18,9 @@
         tools:layout="@layout/event_list_fragment" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/buttonNavigationView"
+        android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:labelVisibilityMode="labeled"
+        app:elevation="8dp"
         app:menu="@menu/navigation" />
 </androidx.appcompat.widget.LinearLayoutCompat>

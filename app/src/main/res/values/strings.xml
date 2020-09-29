@@ -5,9 +5,13 @@
     <string name="title_home">Início</string>
     <string name="title_search">Busca</string>
     <string name="title_check_in">Check-in</string>
-    <string name="title_provide">Fornecer</string>
+    <string name="title_event">Evento</string>
+    <string name="title_error">Erro</string>
+    <string name="title_favorite">Favorito</string>
+    <string name="title_share">Compartilhar</string>
 
     <!--  date/hours format  -->
+    <string name="format_date">dd/MM/yyyy \'às\' HH:mm \'hrs\'</string>
     <string name="format_day_month">dd \'de\' MMMM</string>
     <string name="format_day_week_hour">EEE \'às\' HH:mm \'hrs\'</string>
 
@@ -17,11 +21,28 @@
     <!--  home  -->
     <string name="title_slogan">Encontre os melhores eventos para você em um só lugar!</string>
 
+    <!--  search  -->
+    <string name="search_hint">Busque pelo nome&#8230;</string>
+
+    <!--  details  -->
+    <string name="event_checked_favorite">Evento salvo nos favoritos ;)</string>
+    <string name="event_unchecked_favorite">Evento removido dos favoritos!</string>
+    <string name="event_share_title">Estou afim de ir! Vamos?</string>
+
+    <!-- check-in -->
+    <string name="message_no_check_in">Você não realizou nenhum check-in. Assim que realizar poderão ser consultados aqui&#8230;</string>
+    <string name="message_email_required">É necessário um e-mail válido!</string>
+    <string name="message_name_required">Nome completo com pelo menos 10 caracteres é obrigatório!</string>
+    <string name="hint_name">Nome Completo</string>
+    <string name="hint_email">E-Mail</string>
+    <string name="title_success">Sucesso!</string>
+    <string name="check_in_successful">O check-in no evento foi realizado!\nEm breve você receberá um e-mail de confirmação e instruções.</string>
+
     <!-- MESSAGE ERROR -->
     <string name="message_error_conn">Não foi possível conectar aos nossos servidores. Por favor, verifique sua conexão!</string>
     <string name="message_error_400">A operação não pode ser completada. Forneça todas as informações solicitadas e tente novamente&#8230;</string>
     <string name="message_error_500">Ocorreu um erro na comunicação com o servidor. Por favor, tente novamente mais tarde&#8230;</string>
-    <string name="message_location_required">Para uma melhor experiência de uso, forneça o acesso a localização.</string>
+    <string name="message_events_no_data">Ops! Não foi possível encontrar eventos&#8230;</string>
 
     <string name="google_maps_key" translatable="false">AIzaSyCJdhcCOXVQbwK6rupRLH0S1AlQAexjCP8</string>
 </resources>

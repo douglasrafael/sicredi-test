@@ -14,7 +14,9 @@
         style="@style/Widget.MaterialComponents.CardView"
         android:layout_width="match_parent"
         android:layout_height="170dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:clickable="true"
         android:focusable="true"
         app:cardCornerRadius="10dp">
@@ -87,20 +89,34 @@
                 tools:src="@drawable/placeholder" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginBottom="6dp"
                 android:clickable="false"
                 android:focusable="false"
                 android:text="@{String.format(@string/price_format, event.price)}"
                 android:textAlignment="center"
-                tools:text="R$ 19.99"
                 android:textColor="@color/colorSecondaryText"
                 app:chipBackgroundColor="@color/colorAccent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="R$ 19.99" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/ic_action_not_favorite"
+                android:tint="@color/colorFavorite"
+                app:changeIconFavorite="@{event.isFavorite}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/eventImage" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
 </layout>

@@ -7,17 +7,14 @@
 
         <variable
             name="adapter"
-            type="com.fsdevelopment.sicreditestapp.ui.event.list.EventListAdapter" />
+            type="com.fsdevelopment.sicreditestapp.ui.adapter.EventListAdapter" />
 
-        <variable
-            name="viewModel"
-            type="com.fsdevelopment.sicreditestapp.ui.event.EventViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.event.list.EventListFragment">
+        tools:context=".ui.list.EventListFragment">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -52,18 +49,12 @@
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
                         android:alpha="0.8"
                         android:paddingTop="10dp"
                         android:text="@string/title_slogan"
                         android:textColor="@color/colorSecondaryText" />
 
-                    <include
-                        android:id="@+id/boxRequireLocation"
-                        layout="@layout/provide_location_message"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:visibility="gone" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
             </androidx.appcompat.widget.Toolbar>
@@ -77,62 +68,55 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="100dp"
                 android:background="@color/colorPrimary" />
 
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/swipeRefreshLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+                android:layout_height="match_parent">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <FrameLayout
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/placeholder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <include layout="@layout/event_item_placeholder" />
+
+                        <include layout="@layout/event_item_placeholder" />
+
+                        <include layout="@layout/event_item_placeholder" />
+
+                        <include layout="@layout/event_item_placeholder" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <LinearLayout
+                        android:id="@+id/boxNoData"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:layout_marginTop="200dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
 
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:id="@+id/boxPlaceholder"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="25dp"
-                            android:layout_marginEnd="16dp"
-                            android:orientation="vertical"
-                            android:visibility="gone">
+                        <include layout="@layout/no_data_message" />
+                    </LinearLayout>
 
-                            <include layout="@layout/event_item_placeholder" />
-
-                            <include layout="@layout/event_item_placeholder" />
-
-                            <include layout="@layout/event_item_placeholder" />
-
-                            <include layout="@layout/event_item_placeholder" />
-
-                        </androidx.appcompat.widget.LinearLayoutCompat>
-
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:id="@+id/boxRecyclerView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:orientation="vertical"
-                            android:padding="16dp">
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                app:setAdapter="@{adapter}"
-                                tools:listitem="@layout/event_item" />
-                        </androidx.appcompat.widget.LinearLayoutCompat>
-
-                    </FrameLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:setAdapter="@{adapter}"
+                        tools:listitem="@layout/event_item" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

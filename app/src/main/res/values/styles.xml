@@ -8,13 +8,13 @@
         <item name="android:windowBackground">@color/colorBackground</item>
         <item name="android:fontFamily">@font/secular_one_regular</item>
 
+        <item name="colorOnSecondary">@android:color/white</item>
+        <item name="colorSecondary">@color/colorPrimary</item>
+
+<!--        <item name="colorError">@color/colorDanger</item>-->
+<!--        <item name="colorOnError">@color/colorDanger</item>-->
+<!--        <item name="colorSurface">@color/colorBackground</item>-->
+<!--        <item name="colorOnSurface">@color/colorPrimaryText</item>-->
     </style>
 
-    <style name="AppTheme.SearchInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:textColorHint">@android:color/white</item>
-        <item name="startIconTint">@android:color/white</item>
-        <item name="boxBackgroundColor">@color/colorBackgroundSearchInput</item>
-        <item name="boxStrokeColor">@color/colorBackgroundSearchInput</item>
-    </style>
 </resources>
