@@ -1,102 +1,41 @@
-# Sicredi Test - My Event App
-[![License][license-image]][license-url] [![Commit][last-commit-image]][last-commit-url] [![Releases][releases-image]][releases-url] [![Contributors][contributors-image]][contributors-url]
+# PicPay - Desafio Android
 
-[![Download][apk-download]][apk-download-url]
+<img src="https://github.com/mobilepicpay/desafio-android/blob/master/desafio-picpay.gif" width="300"/>
 
------
+Um dos desafios de qualquer time de desenvolvimento é lidar com código legado e no PicPay isso não é diferente. Um dos objetivos de trazer os melhores desenvolvedores do Brasil é atacar o problema. Para isso, essa etapa do processo consiste numa proposta de solução para o desafio abaixo e você pode escolher a melhor forma de resolvê-lo, de acordo com sua comodidade e disponibilidade de tempo:
+- Resolver o desafio previamente, e explicar sua abordagem no momento da entrevista.
+- Discutir as possibilidades de solução durante a entrevista, fazendo um pair programming (bate-papo) interativo com os nossos devs.
 
-### Este projeto foi realizado para o teste de desenvolvedor Android da [Sicredi](https://github.com/WoopSicredi/jobs/issues/1). 
+Com o passar do tempo identificamos alguns problemas que impedem esse aplicativo de escalar e acarretam problemas de experiência do usuário. A partir disso elaboramos a seguinte lista de requisitos que devem ser cumpridos ao melhorar nossa arquitetura:
 
-Foi desenvolvido em Kotlin utilizando os mais avançados recursos que a linguagem oferece como Extensions e Coroutines, como também, os mais recentes recursos das bibliotecas Jetpack, como Navigation e Databinding.
+- Em mudanças de configuração o aplicativo perde o estado da tela. Gostaríamos que o mesmo fosse mantido.
+- Nossos relatórios de crash têm mostrado alguns crashes relacionados a campos que não deveriam ser nulos sendo nulos e gerenciamento de lifecycle. Gostaríamos que fossem corrigidos.
+- Gostaríamos de cachear os dados retornados pelo servidor.
+- Haverá mudanças na lógica de negócios e gostaríamos que a arquitetura reaja bem a isso.
+- Haverá mudanças na lógica de apresentação. Gostaríamos que a arquitetura reaja bem a isso.
+- Com um grande número de desenvolvedores e uma quantidade grande de mudanças ocorrendo testes automatizados são essenciais.
+  - Gostaríamos de ter testes unitários testando nossa lógica de apresentação, negócios e dados independentemente, visto que tanto a escrita quanto execução dos mesmos são rápidas.
+  - Por outro lado, testes unitários rodam em um ambiente de execução diferenciado e são menos fiéis ao dia-a-dia de nossos usuários, então testes instrumentados também são importantes.
 
-Com base nos requerimentos e instruções fornecidas para desenvolvimento foi implementado as seguintes funcionalidades:
-- Listagem de eventos;
-- Busca por eventos;
-- Exibição de detalhes do evento, como descrição detalhada e exibição de localização por meio de mapa.
-- Favoritar um evento;
-- Realizar check-in em eventos;
-- Listagem de eventos que realizou check-in.
-- Compartilhamento de evento.
+Boa sorte! =)
 
+Ps.: Fique à vontade para editar o projeto inteiro, organização de pastas e módulos, bem como as dependências utilizadas
 
-## Começando
-A maneira mais fácil de visualizar o aplicativo em ação é baixando e instalando o [apk >>][apk-download-url]
+---
+## Solução
 
-Se deseja visualizar o código e os detalhes de implementação você pode utilizar o Android Studio:
-#### Pré-requisitos
- - Android SDK v30
- - Android Studio 3.5+
+### Arquitetura
+<img src="https://i.imgur.com/ARqH48V.png"  width="300"/>
 
-Para baixar o projeto:
-1. **Clone o repositório**
-   ```console
-   git clone https://github.com/douglasrafael/sicredi-test
-   ```
-2. **Abra o projeto no Android Studio:**
-   - No menu do Android Studio, clique em `File > Open`.
-   - Como alternativa, na tela "Bem-vindo", clique em > `Open an existing Android Studio project`.
-   - Selecione a pasta do projeto e clique em OK.
+### Atualizações gerais
+- Adicionado arquitetura limpa. Camadas: data, domain e presentation
+- Atualizado gradle e versão de dependências
+- Adicionado data binding
+- Adicionado ViewModel com FlowState
+- Adicionado navigation componet
+- Adicionado Koin para DI
+- Adicionado Binding Adapter para carregamento de imagem
+- Adicionado Kotlin Extensions
+- Adicionado Interceptors para cache (quando houver conexão usar cache por 10s, se não houver, usar cache salvo com duração de 1 dia)
+- Adicionado testes de unidade e instrumetação
 
-
-## Modelo de Dados
-A aplicação é composto pelas entidades Event, People e CheckIn.
-
-<img src="https://i.imgur.com/Fa4Hq9x.png" />
-
-
-## Arquitetura
-Foi utilizado **MVVM** _(Model-View-ViewModel)_. Este Pattern suporta ligação bidirecional entre View e ViewModel, com isto é possível termos propagação automática de mudanças e LiveData (Objeto Observável) é utilizado para essa finalidade. 
-
-
-<img src="https://i.imgur.com/mGNkir2.png" />
-
-
-Como pode ser visto na imagem anterior, a arquitetura divide-se em três camadas:
-
-1. **View** - São Activity e Fragment, ou seja, é onde fica os componentes de interface que o usuário interage. Essa camada se comunica exclusivamente com a ViewModel.
-
-2. **ViewModel** - É a camada responsável por expor métodos, comandos e propriedades que mantém o estado da View, ela se comunica com a camada de dados e retorna resultados de uma ação por meio de objetos observáveis.
-
-3. **Model** - É a camada responsável pela regra de negócio da aplicação, persistência de dados e comunicação com serviços externos. Ela exclusivamente responde comandos solicitados pela ViewModel.
-
-## Testes
-Nesse primeiro momento, foi realizado apenas teste de interface. O ideal é que sejam realizados testes de ViewModel também.
-
-
-## Principais Bibliotecas Utilizadas
-
-- [Koin](https://insert-koin.io/) Utilizada para Injeção de Depência (DI), ela cria as instâncias em tempo de execução.
-- [Android Material Compontes](https://material.io/components) Possibilita a utilização dos mais novos componentes do Material Design.
-- [Retrofit](https://square.github.io/retrofit/) Client HTTP. Utilizada para fazer comunicação com API Rest.
-- [Coil](https://github.com/coil-kt/coil/) Utilizada para carregamento de imagens. Ela é escrita 100% em Kotlin e concorre diretamente com Glide e Picasso.
-- [Koleton](https://github.com/ericktijerou/koleton) Fornece uma maneira fácil de mostrar o esqueleto de qualquer visualização, útil para estados de loading.
-- [Alerter](https://github.com/Tapadoo/Alerter/branches) Utilizada para exibir alertas em estilo de notificações dentro do aplicativo.
-- [Timber](https://github.com/JakeWharton/timber) Centralizador de logger.
-- [Play Sevices Maps](https://developers.google.com/maps/documentation/android-sdk/start) Usada para funcionalidades de mapa.
-- [Valifi](https://github.com/mlykotom/valifi) Usada para validação de formulário. Possui suporte a databinding.
-- [mockito](https://github.com/mlykotom/valifi) Usada para realização dos testes de unidade.
-
-
-### Screenshots
-
-<img align="left" src="https://i.imgur.com/su7fhew.png" width="280" />
-<img align="left" src="https://i.imgur.com/K6nSPAF.png" width="280" />
-<img align="left" src="https://i.imgur.com/8AlgoNE.png" width="280" />
-<img align="left" src="https://i.imgur.com/arLjq8j.png" width="280" />
-<img align="left" src="https://i.imgur.com/XFh2thp.png" width="280" />
-<img align="left" src="https://i.imgur.com/dlKQnPi.png" width="280" />
-<img align="left" src="https://i.imgur.com/84OJfCh.png" width="280" />
-
-----
-
-[//]: # (These are reference links used in the body of this note.)
-[license-image]: https://img.shields.io/badge/license-Apache%202-blue.svg
-[license-url]: https://github.com/douglasrafael/sicredi-test/blob/master/LICENSE
-[last-commit-image]: https://img.shields.io/github/last-commit/douglasrafael/sicredi-test.svg
-[last-commit-url]: https://github.com/douglasrafael/sicredi-test/commits
-[releases-image]: https://img.shields.io/github/release-date/douglasrafael/sicredi-test.svg
-[releases-url]: https://github.com/douglasrafael/sicredi-test/releases
-[contributors-image]: https://img.shields.io/github/contributors/douglasrafael/sicredi-test.svg
-[contributors-url]: https://github.com/douglasrafael/sicredi-test/graphs/contributors
-[apk-download]: https://img.shields.io/badge/download%20apk-DEBUG-blue.svg?style=for-the-badge&logo=android
-[apk-download-url]: https://github.com/douglasrafael/sicredi-test/releases/download/1.0.0/sicredi-test_v1.0.0-debug.apk
